@@ -1,8 +1,8 @@
 node{
    sh "pwd>current_path"
    sh 'echo hi'
-   def env.WORKSPACE = current_path
-   def env.WORKSPACE = env.WORKSPACE.trim()
+   env.WORKSPACE = current_path
+   env.WORKSPACE = env.WORKSPACE.trim()
    
    stage "checkout"
    checkout scm
