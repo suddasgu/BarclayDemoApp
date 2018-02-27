@@ -8,7 +8,7 @@ node{
    env.WORKSPACE = env.WORKSPACE.trim()
    echo '3'
    stage('Preparation') {
-      mvnHome = tool 'M3'
+      mvnHome = tool 'Maven3'
    }
    stage "checkout"
    checkout scm
