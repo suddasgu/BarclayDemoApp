@@ -1,8 +1,10 @@
 node{
    sh "pwd>current_path"
-   sh 'echo hi'
+   echo '1'
    env.WORKSPACE = current_path
+   echo '2'
    env.WORKSPACE = env.WORKSPACE.trim()
+   echo '3'
    
    stage "checkout"
    checkout scm
