@@ -1,0 +1,10 @@
+node(){
+  try{
+  
+   stage "checkout"
+   git branch:'master' url :'https://git.ng.bluemix.net/suddasgu/BerclayTestApp.git'
+}
+catch(error)
+{
+
+}
