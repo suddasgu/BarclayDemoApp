@@ -8,7 +8,6 @@ node{
    env.WORKSPACE = env.WORKSPACE.trim()
    echo '3'
    stage('Preparation') {
-      git 'https://github.com/jenkinsci/jenkins.git'
       mvnHome = tool 'M3'
    }
    stage "checkout"
