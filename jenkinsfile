@@ -7,6 +7,6 @@ node{
    checkout scm
    
    stage 'build'
-   rt_mvn.run pom: 'pom.xml', goals:'clean package -DskipTests -Dbuild.number='01' -Dmaven.repo.local='+ env.WORKSPACE +'/.m2/repository
+   rt_mvn.run pom: 'pom.xml', goals:'clean package -DskipTests -Dbuild.number='01' -Dmaven.repo.local='+ env.WORKSPACE +'/.m2/repository'
     
        }
