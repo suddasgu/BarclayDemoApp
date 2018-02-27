@@ -1,4 +1,4 @@
 node{
    stage "checkout"
-   git branch:'master' url :'https://git.ng.bluemix.net/suddasgu/BerclayTestApp.git'
+   git branch:'master', url :'https://git.ng.bluemix.net/suddasgu/BerclayTestApp.git'
     }
