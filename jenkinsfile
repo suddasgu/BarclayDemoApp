@@ -1,7 +1,7 @@
 node{
    sh "pwd>current_path"
-   env.WORKSPACE = readFile 'current_path'
-   env.WORKSPACE = env.WORKSPACE.trim()
+   def env.WORKSPACE = current_path
+   def env.WORKSPACE = env.WORKSPACE.trim()
    
    stage "checkout"
    checkout scm
