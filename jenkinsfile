@@ -1,4 +1,12 @@
 node{
+   sh "pwd>current_path"
+   env.WORKSPACE = readFile 'current_path'
+   env.WORKSPACE = env.WORKSPACE.trim()
+   
    stage "checkout"
    checkout scm
+   
+   stage 'build'
+   rt_mvn.run pom: 'pom.xml', goals:'clean package -DskipTests -Dbuild.number='01' -Dmaven.repo.local='+ env.WORKSPACE +'/.m2/repository
+    
        }
