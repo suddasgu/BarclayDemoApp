@@ -1,7 +1,7 @@
 node{
    sh "pwd>current_path"
    echo '1'
-   env.WORKSPACE = current_path
+   env.WORKSPACE = readFile 'current_path'
    echo '2'
    env.WORKSPACE = env.WORKSPACE.trim()
    echo '3'
