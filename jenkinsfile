@@ -1,4 +1,4 @@
 node{
    stage "checkout"
-   git branch:'master', url :'https://git.ng.bluemix.net/suddasgu/BerclayTestApp.git'
+   git branch:'master',credentialsId:'a10b8d0d-a731-47a4-b42e-9f7a2a57575b', url :'https://git.ng.bluemix.net/suddasgu/BerclayTestApp.git'
     }
