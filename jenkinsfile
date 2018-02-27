@@ -1,10 +1,4 @@
 node{
-    agent {
-        docker {
-            image 'maven:3-alpine'
-            args '-v /root/.m2:/root/.m2'
-        }
-    }
    sh "pwd>current_path"
    echo '1'
    env.WORKSPACE = readFile 'current_path'
