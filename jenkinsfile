@@ -15,7 +15,7 @@ node{
    sh "'${mvnHome}/bin/mvn' -DskipTests clean package" 
    
    stage 'upload'
-   sh 'chmod 777 /target/BarclayDemoApp.jar'
-   sh 'curl -v -u admin:admin123 --upload-file /target/BarclayDemoApp.jar http://9.77.87.209::8081/nexus/content/repositories/releases'
+   sh 'chmod 777 /var/jenkins_home/workspace/Sample-Pipeline/target/BarclayDemoApp.jar'
+   sh 'curl -v -u admin:admin123 --upload-file /var/jenkins_home/workspace/Sample-Pipeline/target/BarclayDemoApp.jar http://9.77.87.209::8081/nexus/content/repositories/releases'
     
        }
