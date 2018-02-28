@@ -14,8 +14,10 @@ node{
    stage 'build'
    sh "'${mvnHome}/bin/mvn' -DskipTests clean package" 
    
-   stage 'upload'
-   sh 'chmod 777 /var/jenkins_home/workspace/Sample-Pipeline/target/BarclayDemoApp.jar'
-   sh 'curl -v -u admin:admin123 --upload-file /var/jenkins_home/workspace/Sample-Pipeline/target/BarclayDemoApp.jar http://9.77.87.209::8081/nexus/content/repositories/releases'
+   stage('Publish') {
+     nexusPublisher nexusInstanceId: 'localNexus', nexusRepositoryId: 'releases', packages: [[$class: 'MavenPackage', mavenAssetList: [[classifier: '', extension: '', filePath: '/var/jenkins_home/workspace/Sample-Pipeline/target/BarclayDemoApp.jar']], mavenCoordinate: [artifactId: 'BarclayDemoApp', groupId: 'com.barclay.demo', packaging: 'jar', version: '0.0.1-SNAPSHOT']]]
+
+   }
+   
     
        }
