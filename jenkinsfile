@@ -12,10 +12,10 @@ node{
    checkout scm
    
    stage 'build'
-   sh "'${mvnHome}/bin/mvn' -Dmaven.test.failure.ignore clean package" 
+   sh "'${mvnHome}/bin/mvn' -DskipTests clean package" 
    
    stage 'upload'
-   sh chmod 777 /target/BarclayDemoApp.jar
+   sh 'chmod 777 /target/BarclayDemoApp.jar'
    sh 'curl -v -u admin:admin123 --upload-file /target/BarclayDemoApp.jar http://9.77.87.209::8081/nexus/content/repositories/releases'
     
        }
