@@ -1,4 +1,4 @@
-node{    
+node (slave-1){    
     sh "pwd>current_path"
    echo '1'
    env.WORKSPACE = readFile 'current_path'
