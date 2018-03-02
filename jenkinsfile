@@ -8,6 +8,7 @@ node ('slave-1'){
    echo '3'
    stage('Preparation') {
       mvnHome = tool 'Maven3'
+      tool Docker1
    }
    stage ("checkout")
      checkout scm   
