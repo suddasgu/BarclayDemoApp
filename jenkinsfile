@@ -2,22 +2,28 @@ node{
     sh "pwd>current_path"
    echo '1'
    env.WORKSPACE = readFile 'current_path'
+   env.PATH = "${tool 'Maven3'}/bin:${env.PATH}"
    echo '2'
    env.WORKSPACE = env.WORKSPACE.trim()
    echo '3'
    stage('Preparation') {
       mvnHome = tool 'Maven3'
    }
-   stage "checkout"
+   stage ("checkout")
    checkout scm
    
-   stage 'build'
-   sh "'${mvnHome}/bin/mvn' -DskipTests clean package" 
+   stage ('build')
+  // sh "'${mvnHome}/bin/mvn' -DskipTests clean package" 
+   sh "mvn -DskipTests clean package"
    
    stage('Publish') {
      nexusPublisher nexusInstanceId: 'NexusServer', nexusRepositoryId: 'releases', packages: [[$class: 'MavenPackage', mavenAssetList: [[classifier: '', extension: '', filePath: '/var/jenkins_home/workspace/Sample-Pipeline/target/BarclayDemoApp.jar']], mavenCoordinate: [artifactId: 'BarclayDemoApp', groupId: 'com.barclay.demo', packaging: 'jar', version: '0.0.1']]]
 
    }
    
+   Stage('dockerBuild')
+   {
+    sh "docker.build("suddasgu/docker-berclay-pipeline:${env.BUILD_NUMBER}")"
+   }
     
        }
