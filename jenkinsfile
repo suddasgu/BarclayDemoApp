@@ -20,6 +20,6 @@ node{
   // }
    
    stage 'dockerBuild' 
-    docker.build('suddasgu/docker-berclay-pipeline:${env.BUILD_NUMBER}')   
+    docker.build('suddasgu/docker-berclay-pipeline:${BUILD_NUMBER}')   
     
        }
