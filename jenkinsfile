@@ -21,7 +21,7 @@ node{
 
   // }
    
-   Stage 'dockerBuild'
+   stage 'dockerBuild'
    {
     sh "docker.build('suddasgu/docker-berclay-pipeline:${env.BUILD_NUMBER}')"
    }
