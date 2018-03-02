@@ -10,11 +10,9 @@ node{
       mvnHome = tool 'Maven3'
    }
    stage ("checkout")
-   checkout scm
-   
+     checkout scm   
    stage ('build')
-  // sh "'${mvnHome}/bin/mvn' -DskipTests clean package" 
-   sh "mvn -DskipTests clean package"
+     sh "mvn -DskipTests clean package"
    
   // stage('Publish') {
    //  nexusPublisher nexusInstanceId: 'NexusServer', nexusRepositoryId: 'releases', packages: [[$class: 'MavenPackage', mavenAssetList: [[classifier: '', extension: '', filePath: '/var/jenkins_home/workspace/Sample-Pipeline/target/BarclayDemoApp.jar']], mavenCoordinate: [artifactId: 'BarclayDemoApp', groupId: 'com.barclay.demo', packaging: 'jar', version: '0.0.1']]]
@@ -22,7 +20,6 @@ node{
   // }
    
    stage 'dockerBuild' 
-    docker.build('suddasgu/docker-berclay-pipeline:${env.BUILD_NUMBER}')
-   
+    docker.build('suddasgu/docker-berclay-pipeline:${env.BUILD_NUMBER}')   
     
        }
