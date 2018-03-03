@@ -9,6 +9,7 @@ node('Slave-1') {
    echo '3'
    stage('Preparation') {
       mvnHome = tool 'Maven3'
+      dockerHome=tool 'Docker1'
       
    }
    stage ("checkout")
@@ -23,7 +24,7 @@ node('Slave-1') {
    
     stage('Create Docker Image'){
     docker.withTool("Docker1") {
-    sh "docker images"
+    sh "$dockerHome/docker images"
     sh "docker build 'suddasgu/docker-berclay-pipeline:${BUILD_NUMBER}'"  
     }
     }
