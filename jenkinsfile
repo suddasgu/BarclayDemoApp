@@ -21,7 +21,9 @@ node('Slave-1') {
 
   // }
    
-    stage('Create Docker Image') 
-    docker.build('suddasgu/docker-berclay-pipeline:${BUILD_NUMBER}')   
-    
+    stage('Create Docker Image'){
+    docker.withTool("Docker1") {
+    docker.build('suddasgu/docker-berclay-pipeline:${BUILD_NUMBER}')  
+    }
+    }
        }
