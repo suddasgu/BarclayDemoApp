@@ -1,4 +1,4 @@
-node ('slave-1'){  
+node {  
 
     sh "pwd>current_path"
    echo '1'
