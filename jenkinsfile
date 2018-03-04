@@ -22,7 +22,7 @@ node {
   // }
    
     stage('Create Docker Image'){
-        bat 'docker build  -t docker-berclay-pipeline:${BUILD_NUMBER}' 
+        bat 'docker build docker-berclay-pipeline:${BUILD_NUMBER}' 
     
     }
    }
