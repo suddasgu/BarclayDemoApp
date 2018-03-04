@@ -22,7 +22,7 @@ node {
   // }
    
     stage('Create Docker Image'){
-        bat "docker build -f $env.WORKSPACE/Dockerfile" 
+        bat "docker build -f $env.WORKSPACE\Dockerfile" 
     
     }
    }
