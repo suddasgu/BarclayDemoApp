@@ -1,5 +1,7 @@
 node {  
-
+    bat "cd>current_path"
+    echo '1'
+   env.WORKSPACE = readFile 'current_path'
     env.PATH = "${tool 'Maven3'}/bin:${env.PATH}"
    echo '2'
    env.WORKSPACE = env.WORKSPACE.trim()
@@ -20,7 +22,7 @@ node {
   // }
    
     stage('Create Docker Image'){
-        bat "docker build 'suddasgu/docker-berclay-pipeline:${BUILD_NUMBER}'"  
+        bat "docker build 'suddasgu/docker-berclay-pipeline:${BUILD_NUMBER} $env.WORKSPACE/Dockerfile'"  
     
     }
    }
