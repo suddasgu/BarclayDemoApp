@@ -15,7 +15,7 @@ node {
    stage ("checkout")
      checkout scm   
    stage ('build')
-     mvn -DskipTests clean package
+    mvn '-DskipTests clean package'
    
   // stage('Publish') {
    //  nexusPublisher nexusInstanceId: 'NexusServer', nexusRepositoryId: 'releases', packages: [[$class: 'MavenPackage', mavenAssetList: [[classifier: '', extension: '', filePath: '/var/jenkins_home/workspace/Sample-Pipeline/target/BarclayDemoApp.jar']], mavenCoordinate: [artifactId: 'BarclayDemoApp', groupId: 'com.barclay.demo', packaging: 'jar', version: '0.0.1']]]
