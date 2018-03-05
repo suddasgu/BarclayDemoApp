@@ -21,22 +21,23 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<java.version>1.8</java.version>
 		<spring-cloud.version>Edgware.SR2</spring-cloud.version>
 	</properties>
 
 	<dependencies>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-actuator</artifactId>
-		</dependency>
-		<dependency>
+				<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-mongodb</artifactId>
 		</dependency>
-		<dependency>
+		 <dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
+         <dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-actuator</artifactId>
+		</dependency>		
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-eureka</artifactId>
@@ -47,6 +48,33 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+		<dependency>
+		    <groupId>io.springfox</groupId>
+			<artifactId>springfox-swagger2</artifactId>
+		    <version>2.6.1</version>
+		    <scope>compile</scope>
+		</dependency>
+		<dependency>
+		    <groupId>io.springfox</groupId>
+		    <artifactId>springfox-swagger-ui</artifactId>
+		    <version>2.6.1</version>
+		    <scope>compile</scope>
+		</dependency>
+		<dependency>
+            <groupId>io.swagger</groupId>
+            <artifactId>swagger-core</artifactId>
+            <version>1.5.16</version>
+        </dependency>
+        <dependency>
+            <groupId>com.github.kongchen</groupId>
+            <artifactId>swagger-maven-plugin</artifactId>
+            <version>3.1.5</version>
+        </dependency>
+        <dependency>
+        	<groupId>org.eclipse.osgi</groupId>
+        	<artifactId>org.eclipse.osgi</artifactId>
+        	<version>3.6.0.v20100517</version>
+        </dependency>
 	</dependencies>
 
 	<dependencyManagement>
@@ -62,7 +90,7 @@
 	</dependencyManagement>
 
 	<build>
-		<finalName>BarclayDemoApp</finalName>
+	   <finalName>BarclayDemoApp</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>

@@ -22,7 +22,24 @@ node {
   // }
    
     stage('Create Docker Image'){
-        bat "docker build  -t suddasgu/docker-berclay-pipeline:${BUILD_NUMBER} ${env.WORKSPACE}"
-    
+      withDockerServer([credentialsId: '260c91bd-ea55-4d23-afad-16b49c18955d', uri: 'tcp://192.168.99.101:2376']) {
+            bat "docker build  -t suddasgu/docker-berclay-pipeline:${BUILD_NUMBER} ${env.WORKSPACE}"
+            }    
     }
+    
+    stage ('Run Application') {
+    try {
+     withDockerServer([credentialsId: '260c91bd-ea55-4d23-afad-16b49c18955d', uri: 'tcp://192.168.99.101:2376']){
+      // Start database container here
+      bat "docker run --name mongo_cn -d -p 27017:27017 mongo"
+      // Run application using Docker image
+      bat "docker run --name spring_cn suddasgu/docker-berclay-pipeline:${env.BUILD_NUMBER}"
+      }
+      
+    } catch (error) {
+    } finally {
+      
+    }
+  }
+
    }
