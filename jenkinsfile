@@ -22,7 +22,8 @@ node {
   // }
    
     stage('Create Docker Image'){
-        bat "docker build  -t suddasgu/docker-berclay-pipeline:${BUILD_NUMBER} ${env.WORKSPACE}"
-    
+      withDockerServer([credentialsId: '260c91bd-ea55-4d23-afad-16b49c18955d', uri: 'tcp://192.168.99.101:2376']) {
+            bat "docker build  -t suddasgu/docker-berclay-pipeline:${BUILD_NUMBER} ${env.WORKSPACE}"
+            }    
     }
    }
