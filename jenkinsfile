@@ -22,7 +22,7 @@ node {
   // }
    
     stage('Create Docker Image'){
-        bat "docker build  -t suddasgu/docker-berclay-pipeline:${BUILD_NUMBER}" 
+        bat "docker build  -t suddasgu/docker-berclay-pipeline:${BUILD_NUMBER} ${env.WORKSPACE}"
     
     }
    }
