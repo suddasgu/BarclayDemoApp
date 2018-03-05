@@ -8,7 +8,7 @@ node {
    echo '3'
    stage('Preparation') {
       mvnHome = tool 'Maven3'
-      dockerHome=tool 'Docker1'
+      //dockerHome=tool 'Docker1'
       
    }
    stage ("checkout")
