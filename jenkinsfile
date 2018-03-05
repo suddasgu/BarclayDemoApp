@@ -34,8 +34,7 @@ node {
       bat "docker run --name mongo_cn -d -p 27017:27017 mongo"
       // Run application using Docker image
       bat "docker run --name spring_cn suddasgu/docker-berclay-pipeline:${env.BUILD_NUMBER}"
-      currentBuild.result = 'SUCCESS'
-      return
+      
       }
       
     } catch (error) {
@@ -43,5 +42,7 @@ node {
       
     }
   }
-
+   stage 'exit'
+   currentBuild.result = 'SUCCESS'
+   return
    }
