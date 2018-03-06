@@ -1,20 +1,25 @@
 node {  
     bat "cd>current_path"
-    echo '1'
-   env.WORKSPACE = readFile 'current_path'
-    env.PATH = "${tool 'Maven3'}/bin:${env.PATH}"
-   echo '2'
-   env.WORKSPACE = env.WORKSPACE.trim()
-   echo '3'
+    env.WORKSPACE = readFile 'current_path'    
+    env.WORKSPACE = env.WORKSPACE.trim()
+  
    stage('Preparation') {
       mvnHome = tool 'Maven3'
-      //dockerHome=tool 'Docker1'
-      
+      javaHome= tool 'jdk8'
+      env.PATH = "${mvnHome}/bin:${env.PATH}"
+      env.PATH= "${javaHome}/bin:${env.PATH}" 
+      echo "path=${env.PATH}"      
    }
+   
    stage ("checkout")
      checkout scm   
+    
+   stage "analyze code"
+    bat "mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent-integration install -Dmaven.test.failure.ignore=true -Dskip.integration.test=true"
+    bat "mvn sonar:sonar -Dsonar.host.url=http://localhost:9000 -Dsonar.sources=src/main" 
+   
    stage ('build')
-   bat 'mvn -DskipTests clean package'
+      bat 'mvn -DskipTests clean package'
    
   // stage('Publish') {
    //  nexusPublisher nexusInstanceId: 'NexusServer', nexusRepositoryId: 'releases', packages: [[$class: 'MavenPackage', mavenAssetList: [[classifier: '', extension: '', filePath: '/var/jenkins_home/workspace/Sample-Pipeline/target/BarclayDemoApp.jar']], mavenCoordinate: [artifactId: 'BarclayDemoApp', groupId: 'com.barclay.demo', packaging: 'jar', version: '0.0.1']]]
