@@ -6,7 +6,7 @@ node {
    stage('Preparation') {
       mvnHome = tool 'Maven3'
       javaHome= tool 'jdk8'
-      env.JAVA_HOME=${javaHome}
+      env.JAVA_HOME="${javaHome}"
       env.PATH = "${mvnHome}/bin:${env.PATH}"
       env.PATH= "${javaHome}/bin:${env.PATH}" 
       echo "path=${env.PATH}"      
