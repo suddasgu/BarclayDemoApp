@@ -8,7 +8,7 @@ node {
       javaHome= tool 'jdk8'
       env.PATH = "${mvnHome}/bin:${env.PATH}"
       env.PATH= "${javaHome}/bin:${env.PATH}" 
-      echo "${env.PATH}"      
+      echo "path=${env.PATH}"      
    }
    
    stage ("checkout")
