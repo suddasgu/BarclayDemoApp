@@ -4,7 +4,7 @@ node {
     env.WORKSPACE = env.WORKSPACE.trim()
   
    stage('Preparation') {
-       mvnHome = tool 'Maven3'
+      mvnHome = tool 'Maven3'
       javaHome= tool 'jdk8'
       env.PATH = "${mvnHome}/bin:${env.PATH}"
       env.PATH= "${javaHome}/bin:${env.PATH}"       
