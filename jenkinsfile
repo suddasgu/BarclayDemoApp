@@ -13,6 +13,11 @@ node {
    }
    stage ("checkout")
      checkout scm   
+    
+   stage "analyze code"
+    bat "mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent-integration-integration install -Dmaven.test.failure.ignore=true -Dskip.integration.test=true"
+    bat "mvn sonar:sonar -Dsonar.host.url=http://localhost:9000 -Dsonar.sources=src/main" 
+   
    stage ('build')
    bat 'mvn -DskipTests clean package'
    
