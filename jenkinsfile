@@ -1,14 +1,12 @@
 node {  
     bat "cd>current_path"
-    echo '1'
-   env.WORKSPACE = readFile 'current_path'
+    env.WORKSPACE = readFile 'current_path'
     env.PATH = "${tool 'Maven3'}/bin:${env.PATH}"
-   echo '2'
-   env.WORKSPACE = env.WORKSPACE.trim()
-   echo '3'
+    env.PATH= "${tool 'jdk8'}/bin:${env.PATH}"   
+    env.WORKSPACE = env.WORKSPACE.trim()
+  
    stage('Preparation') {
-      mvnHome = tool 'Maven3'
-      //dockerHome=tool 'Docker1'
+      mvnHome = tool 'Maven3'      
       
    }
    stage ("checkout")
